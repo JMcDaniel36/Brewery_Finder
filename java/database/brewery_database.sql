@@ -103,10 +103,11 @@ CREATE TABLE IF NOT EXISTS public.reviews
 
 CREATE TABLE IF NOT EXISTS public.users
 (
-    user_id integer NOT NULL,
-    name character varying COLLATE pg_catalog."default" NOT NULL,
-    password character varying COLLATE pg_catalog."default" NOT NULL,
-    CONSTRAINT users_pkey PRIMARY KEY (user_id)
+    user_id integer NOT NULL DEFAULT nextval('seq_user_id'::regclass),
+    username character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    password_hash character varying(200) COLLATE pg_catalog."default" NOT NULL,
+    role character varying(50) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT pk_user PRIMARY KEY (user_id)
 );
 
 INSERT INTO breweries (brewery_id, brewery_name, website, state, city) VALUES (01, )
@@ -187,7 +188,7 @@ INSERT INTO favorites (user_id, beer_name, brewery_name) VALUES
 
 INSERT INTO reviews (review_id, brewery_name, beer_name, description, rating, user_id) VALUES
 
-INSERT INTO users (user_id, name, password) VALUES
+INSERT INTO users (user_id, username, password_has, role) VALUES
 
 
 
