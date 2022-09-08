@@ -8,13 +8,11 @@ public class Brewery {
 	private String address_2;
 	private String city;
 	private String state;
-	private String county_province;
 	private String postal_code;
 	private String website_url;
-	private String country;
 
 	public Brewery(String brewer_Id, String name, String brewery_type, String street, String address_2, String city,
-            String state, String county_province, String postal_code, String website_url, String country) {
+            String state, String postal_code, String website_url) {
         this.brewer_Id = brewer_Id;
         this.name = name;
         this.brewery_type = brewery_type;
@@ -22,10 +20,8 @@ public class Brewery {
         this.address_2 = address_2;
         this.city = city;
         this.state = state;
-        this.county_province = county_province;
         this.postal_code = postal_code;
         this.website_url = website_url;
-        this.country = country;
     }
 
     public String getBrewer_Id() {
@@ -83,15 +79,6 @@ public class Brewery {
     public void setState(String state) {
         this.state = state;
     }
-
-    public String getCounty_province() {
-        return county_province;
-    }
-
-    public void setCounty_province(String county_province) {
-        this.county_province = county_province;
-    }
-
     public String getPostal_code() {
         return postal_code;
     }
@@ -107,15 +94,6 @@ public class Brewery {
     public void setWebsite_url(String website_url) {
         this.website_url = website_url;
     }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
     public Brewery() {
 	}
 }
