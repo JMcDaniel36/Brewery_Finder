@@ -34,7 +34,7 @@ class Register extends Component{
     render(){
         return(
             <div>
-                <h1>Create Account</h1>
+                <h1 className='register-header'>Create A New Account</h1>
                 <label class="sr-only">Username</label>
                 <input
                     type="text"

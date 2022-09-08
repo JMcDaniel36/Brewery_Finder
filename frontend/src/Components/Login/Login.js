@@ -5,7 +5,6 @@ import {withRouter} from 'react-router-dom'
 import {addToken, addUser} from '../../Redux/actionCreators'
 import {baseUrl} from '../../Shared/baseUrl'
 import axios from 'axios'
-import Header from '../Header'
 
 
 
@@ -47,7 +46,7 @@ class Login extends Component {
     render(){
         return(
             <div>
-                <h1>Please Sign In</h1>
+                <h1 className='sign-in-header'>Please Sign In To Your Triple J Account</h1>
                 <label class="sr-only">Username</label>
                 <input
                     type="text"
@@ -70,8 +69,8 @@ class Login extends Component {
                     onChange={this.handleInputChange}
                     required
                 />
-                <Link to="/register">Need an account?</Link>
-                <button type="submit" onClick={this.handleLogin}>Sign in</button>
+                <Link to="/register" id='register-link'>Or sign up for one here!</Link>
+                <button type="submit" onClick={this.handleLogin} id='submit-button'>Sign in</button>
             </div>
         )
     }
