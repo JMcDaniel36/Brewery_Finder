@@ -1,35 +1,39 @@
 package com.techelevator.model;
 
 public class Brewery {
-    private String brewer_Id;
+    private Long breweryId;
 	private String name;
-	private String brewery_type;
-	private String street;
-	private String address_2;
+	private String address;
 	private String city;
-	private String state;
-	private String postal_code;
-	private String website_url;
+	private String zipcode;
+	private String phone;
+	private int user_Id;
+    private String hours;
+	private String websiteUrl;
 
-	public Brewery(String brewer_Id, String name, String brewery_type, String street, String address_2, String city,
-            String state, String postal_code, String website_url) {
-        this.brewer_Id = brewer_Id;
+    public Brewery(Long breweryId, String name, String address, String city, String zipcode, String phone, int user_Id,
+            String hours, String websiteUrl) {
+        this.breweryId = breweryId;
         this.name = name;
-        this.brewery_type = brewery_type;
-        this.street = street;
-        this.address_2 = address_2;
+        this.address = address;
         this.city = city;
-        this.state = state;
-        this.postal_code = postal_code;
-        this.website_url = website_url;
+        this.zipcode = zipcode;
+        this.phone = phone;
+        this.user_Id = user_Id;
+        this.hours = hours;
+        this.websiteUrl = websiteUrl;
     }
 
-    public String getBrewer_Id() {
-        return brewer_Id;
+    public Brewery(){
+        
     }
 
-    public void setBrewer_Id(String brewer_Id) {
-        this.brewer_Id = brewer_Id;
+    public Long getBreweryId() {
+        return breweryId;
+    }
+
+    public void setBreweryId(Long breweryId) {
+        this.breweryId = breweryId;
     }
 
     public String getName() {
@@ -40,28 +44,12 @@ public class Brewery {
         this.name = name;
     }
 
-    public String getBrewery_type() {
-        return brewery_type;
+    public String getAddress() {
+        return address;
     }
 
-    public void setBrewery_type(String brewery_type) {
-        this.brewery_type = brewery_type;
-    }
-
-    public String getStreet() {
-        return street;
-    }
-
-    public void setStreet(String street) {
-        this.street = street;
-    }
-
-    public String getAddress_2() {
-        return address_2;
-    }
-
-    public void setAddress_2(String address_2) {
-        this.address_2 = address_2;
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getCity() {
@@ -72,28 +60,43 @@ public class Brewery {
         this.city = city;
     }
 
-    public String getState() {
-        return state;
+    public String getZipcode() {
+        return zipcode;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-    public String getPostal_code() {
-        return postal_code;
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
     }
 
-    public void setPostal_code(String postal_code) {
-        this.postal_code = postal_code;
+    public String getPhone() {
+        return phone;
     }
 
-    public String getWebsite_url() {
-        return website_url;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
-    public void setWebsite_url(String website_url) {
-        this.website_url = website_url;
+    public int getUser_Id() {
+        return user_Id;
     }
-    public Brewery() {
-	}
+
+    public void setUser_Id(int user_Id) {
+        this.user_Id = user_Id;
+    }
+
+    public String getHours() {
+        return hours;
+    }
+
+    public void setHours(String hours) {
+        this.hours = hours;
+    }
+
+    public String getWebsiteUrl() {
+        return websiteUrl;
+    }
+
+    public void setWebsiteUrl(String websiteUrl) {
+        this.websiteUrl = websiteUrl;
+    }
 }

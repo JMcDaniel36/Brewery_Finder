@@ -6,15 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-
 
 import javax.sql.DataSource;
 import com.techelevator.model.Beer;
-import com.techelevator.model.Brewery;;
 
+@Component
 public class JdbcBeerDao implements BeerDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -26,39 +22,44 @@ public class JdbcBeerDao implements BeerDao {
 
     @Override
     public void addABeer(Beer formData) {
-        // TODO Auto-generated method stub
-        
+        String myNewBeer = "insert into beers (brewery_id, beer_name, brewery, description, image, abv, beer_type) values (?, ?, ?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(myNewBeer, formData.getBrewery_Id(), formData.getName(), formData.getBrewery(),
+         formData.getDescription(), formData.getImage(), formData.getAbv(), formData.getType());   
     }
 
     @Override
     public void deleteABeer(String beerId) {
-        // TODO Auto-generated method stub
-        
+        Integer convertedId = Integer.parseInt(beerId);
+		String deleteReview = "delete from reviews where beer_id = ?";
+		String deleteBeer = "delete from beers where beer_id = ?";
+		jdbcTemplate.update(deleteReview, convertedId);
+		jdbcTemplate.update(deleteBeer, convertedId);  
     }
 
     @Override
     public List<Beer> getBeerListByBrewery(String breweryId) {
-        List<Beer> returnedBeers = new ArrayList();
+        List<Beer> listBeers = new ArrayList();
 		String sqlQuery = "select * from beers where brewery_id = ? order by beer_name asc";
 		SqlRowSet theRowSet = jdbcTemplate.queryForRowSet(sqlQuery, breweryId);
 		while(theRowSet.next()) {
 			Beer returnedBeer = mapRowToBeer(theRowSet);
-			returnedBeers.add(returnedBeer);
+			listBeers.add(returnedBeer);
 		}
-		return returnedBeers;
+		return listBeers;
     }
 
     @Override
-    public List<Beer> getSingleBeerInfo(String beerId) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void updateBeerStatus(Beer formData) {
-        // TODO Auto-generated method stub
-        
-    }
+	public List<Beer> getSingleBeerInfo(String beerId) {
+		Integer convertedId = Integer.parseInt(beerId);
+		List<Beer> returnedBeer = new ArrayList();
+		String sqlQuery = "select * from beers where beer_id = ?";
+		SqlRowSet theRowSet = jdbcTemplate.queryForRowSet(sqlQuery, convertedId);
+		while(theRowSet.next()) {
+			Beer oneReturnedBeer = mapRowToBeer(theRowSet);
+			returnedBeer.add(oneReturnedBeer);
+		}
+		return returnedBeer;
+	}
 
     private Beer mapRowToBeer(SqlRowSet rs) {
     	Beer beer = new Beer();

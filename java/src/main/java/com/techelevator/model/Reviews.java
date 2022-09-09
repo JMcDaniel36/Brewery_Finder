@@ -1,53 +1,76 @@
 package com.techelevator.model;
 
+import java.time.LocalDateTime;
+
 public class Reviews {
-	private int review_id;
-	private int beer_id;
-	private String review_text;
-	private int star_rating;
+	// Instance Variables
+	private Long id;
+	private String description;
+	private int rating;
+	private LocalDateTime createTime;
+	private Long beer_Id;
+	private Long username;
+	private String name;
+	
 
+	/****************************************
+	 * Getters and Setters
+	 *
+	 ***/
 	
-	public Reviews() {
-		
+	public Long getId() {
+		return id;
 	}
 	
-	public Reviews(int beer_id, String review_text, int star_rating) {
-		this.beer_id = beer_id;
-		this.review_text = review_text;
-		this.star_rating = star_rating;
+	public void setId(Long id) {
+		this.id = id;
 	}
 	
-	public Reviews(int review_id, int beer_id, String review_text, int star_rating) {
-		this.review_id = review_id;
-		this.beer_id = beer_id;
-		this.review_text = review_text;
-		this.star_rating = star_rating;
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	
+	public int getRating() {
+		return rating;
+	}
+	
+	public void setRating(int rating) {
+		this.rating = rating;
+	}
+	public LocalDateTime getCreateTime() {
+		return createTime;
+	}
+	
+	public void setCreateTime(LocalDateTime createTime) {
+		this.createTime = createTime;
+	}
+	public long getBeerId() {
+		return beer_Id;
+	}
+	
+	public void setBeerId(Long beerId) {
+		this.beer_Id = beerId;
+	}
+	
+	public long getUserId() {
+		return this.username;
+	}
+	
+	public void setUserId(Long userId) {
+		this.username = userId;
 	}
 
-    
-	public int getReview_id() {
-		return review_id;
+	public String getName() {
+		return name;
 	}
-	public void setReview_id(int review_id) {
-		this.review_id = review_id;
+
+	public void setName(String name) {
+		this.name = name;
 	}
-	public int getBeer_id() {
-		return beer_id;
-	}
-	public void setBeer_id(int beer_id) {
-		this.beer_id = beer_id;
-	}
-	public String getReview_text() {
-		return review_text;
-	}
-	public void setReview_text(String review_text) {
-		this.review_text = review_text;
-	}
-	public int getStar_rating() {
-		return star_rating;
-	}
-	public void setStar_rating(int star_rating) {
-		this.star_rating = star_rating;
-	}
+	
 	
 }

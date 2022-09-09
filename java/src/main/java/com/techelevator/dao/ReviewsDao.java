@@ -2,17 +2,18 @@ package com.techelevator.dao;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import com.techelevator.model.Reviews;
 
 public interface ReviewsDao {
 
+	List<Reviews> getReviews(Long beer_id);
 	
-	List<Reviews> getReviewsByBeerId(int id);
-	
-	List<Reviews> getAverageStarsById(int obdbId);
-	
-	void addReview(Reviews newReview);
-	
-	void deleteReview(int reviewId);
-	
+	void addReview(Reviews aReview);
+
+	void saveReview(@Valid Reviews review);
+
+	List<Reviews> searchReviewsByBeerId(long beerId);
+
 }

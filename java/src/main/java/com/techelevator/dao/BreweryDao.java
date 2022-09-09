@@ -6,18 +6,17 @@ import com.techelevator.model.Brewery;
 
 public interface BreweryDao {
 	
-	
-	List<Brewery> getBreweriesByName(String name);
-		
-	List<Brewery> getBreweriesByCity(String city);
-	
-	List<Brewery> getBreweriesByState(String state);
 
-    List<Brewery> getBreweriesByZipCode(String zipCode);
+		List<Brewery> getAllBreweries();
 	
-	List<Brewery> getSingleBreweryInfo(String breweryId);
+		void addNewBrewery(Brewery aBrewery);
 	
-	void createNewBrewery(Brewery formData);
+		Brewery getBreweryById(Long breweryId);
 	
-	void assignBrewer(Brewery formData);
+		void updateBrewery(Brewery aBrewery);
+	
+		void deleteBrewery(Long breweryId);
+	
+		List<Brewery> getBreweryByUserID(Long userId);
+	
 }

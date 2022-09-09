@@ -10,8 +10,6 @@ public interface BreweryInfoDao {
 	
 	void addBreweryInfo(BreweryInfo formData);
 	
-	void updateBreweryHistory(BreweryInfo formData);
-	
 	void updateBreweryImage(BreweryInfo formData);
 
 	void updateBreweryHourOpen(BreweryInfo formData);

@@ -13,7 +13,5 @@ public interface BeerDao {
 		
 	void addABeer(Beer formData);
 	
-	void updateBeerStatus (Beer formData);
-
 	void deleteABeer(String beerId);
 }

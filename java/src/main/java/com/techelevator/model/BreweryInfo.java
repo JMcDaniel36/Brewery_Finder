@@ -2,7 +2,6 @@ package com.techelevator.model;
 
 public class BreweryInfo {
 	private String brewery_Id;
-	private String history;
 	private String image_url;
 	private String hour_open;
 	private String hour_closed;
@@ -15,11 +14,10 @@ public class BreweryInfo {
 	private Boolean open_sat;
 
 	
-	public BreweryInfo(String brewery_Id, String history, String image_url, String hour_open, String hour_closed,
+	public BreweryInfo(String brewery_Id,String image_url, String hour_open, String hour_closed,
             Boolean open_sun, Boolean open_mon, Boolean open_tue, Boolean open_wed, Boolean open_thu, Boolean open_fri,
             Boolean open_sat) {
         this.brewery_Id = brewery_Id;
-        this.history = history;
         this.image_url = image_url;
         this.hour_open = hour_open;
         this.hour_closed = hour_closed;
@@ -44,17 +42,6 @@ public class BreweryInfo {
     public void setBrewery_Id(String brewery_Id) {
         this.brewery_Id = brewery_Id;
     }
-
-
-    public String getHistory() {
-        return history;
-    }
-
-
-    public void setHistory(String history) {
-        this.history = history;
-    }
-
 
     public String getImage_url() {
         return image_url;
