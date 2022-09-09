@@ -8,10 +8,7 @@ import javax.sql.DataSource;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
-import com.techelevator.dao.BreweryDao;
 import com.techelevator.model.Brewery;
-import com.techelevator.model.User;
 
 @Component
 public class JdbcBreweryDao implements BreweryDao{

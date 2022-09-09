@@ -1,6 +1,5 @@
 package com.techelevator.dao;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,8 +9,6 @@ import javax.validation.Valid;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
-import com.techelevator.dao.ReviewsDao;
 import com.techelevator.model.Reviews;
 
 @Component
