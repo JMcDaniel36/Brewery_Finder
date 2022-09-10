@@ -48,16 +48,17 @@ public class JdbcBreweryDao implements BreweryDao{
 	
 // GET BREWERY BY ID
 	@Override
-	public Brewery getBreweryById(Long breweryId) {
-		Brewery aBrewery = new Brewery();
+	public List<Brewery> getBreweryById(String breweryId) {
+		List<Brewery> returnedBreweries = new ArrayList<>();
 		String sqlGetABrewery = "SELECT * FROM breweries WHERE brewery_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetABrewery, breweryId);
 		
 		while(results.next()) {
-			aBrewery = mapRowToBrewery(results);
+			Brewery returnedBrewery = mapRowToBrewery(results);
+			returnedBreweries.add(returnedBrewery);
 		}
 		
-		return aBrewery;
+		return returnedBreweries;
 	}
 	
 	
@@ -78,7 +79,7 @@ public class JdbcBreweryDao implements BreweryDao{
 	
 	
 	  @Override 
-	  public void deleteBrewery(Long breweryId) {
+	  public void deleteBrewery(String breweryId) {
 		  String sqlDeleteBrewery = "DELETE FROM breweries WHERE brewery_id = ?";
 		  jdbcTemplate.update(sqlDeleteBrewery, breweryId);
 	  }

@@ -11,11 +11,11 @@ public interface BreweryDao {
 	
 		void addNewBrewery(Brewery aBrewery);
 	
-		Brewery getBreweryById(Long breweryId);
+		List<Brewery> getBreweryById(String breweryId);
 	
 		void updateBrewery(Brewery aBrewery);
 	
-		void deleteBrewery(Long breweryId);
+		void deleteBrewery(String breweryId);
 	
 		List<Brewery> getBreweryByUserID(Long userId);
 	
