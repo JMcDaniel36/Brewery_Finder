@@ -37,9 +37,18 @@ public class ApplicationController {
         this.reviewsDao = reviewsDao;
     }
 
+    @RequestMapping(path= "/breweryfinder/breweries", method = RequestMethod.GET)
+    public List<Brewery> getAllBreweries() {
+        return breweryDao.getAllBreweries();
+    }
+
     @RequestMapping(path = "/breweryfinder/breweries/{breweryId}", method = RequestMethod.GET)
 	public List<Brewery> getBreweryById(@PathVariable String breweryId) {
 	    return breweryDao.getBreweryById(breweryId);
 	}
+
+
+
+
 	
 }
