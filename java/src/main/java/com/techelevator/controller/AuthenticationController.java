@@ -1,5 +1,8 @@
 package com.techelevator.controller;
 
+import java.security.Timestamp;
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.http.HttpHeaders;
@@ -61,6 +64,24 @@ public class AuthenticationController {
         } catch (UsernameNotFoundException e) {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
         }
+    }
+
+    /*Request Mapping*/
+
+    /* Get user by Id */
+
+    @RequestMapping(path="/users/{userId}", method = RequestMethod.GET)
+    public User getUserById(@PathVariable Long userId) {
+        return userDao.getUserById(userId);
+        
+    }
+
+    /*Get all users */
+
+    @RequestMapping(path="/users", method = RequestMethod.GET)
+    public List<User> getAllUsers(){
+            List<User> userList =userDao.findAll();
+            return userList;
     }
 
     /**
