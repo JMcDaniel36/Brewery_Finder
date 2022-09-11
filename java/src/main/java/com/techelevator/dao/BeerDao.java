@@ -7,11 +7,13 @@ import com.techelevator.model.Beer;
 
 public interface BeerDao {
 	
-	List<Beer> getBeerListByBrewery(String breweryId);
+	List <Beer> getAllBeers();
 	
-	List<Beer> getSingleBeerInfo(String beerId);
+	List <Beer> getBeerByBreweryId(String breweryId);
+	
+	List <Beer> getSingleBeerInfo(String beerId);
 		
-	void addABeer(Beer formData);
+	void addABeer(Beer aBeer);
 	
 	void deleteABeer(String beerId);
 }

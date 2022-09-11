@@ -20,11 +20,24 @@ public class JdbcBeerDao implements BeerDao {
 		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 
+	@Override
+	public List<Beer> getAllBeers() {
+		List<Beer> allBeers = new ArrayList<>();
+		String sqlSelectAllBeers = "SELECT * FROM beers";
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllBeers);
+		
+		while(results.next()) {
+			Beer aBeer = mapRowToBeer(results);
+			allBeers.add(aBeer);
+		}
+		return allBeers;
+	}
+
     @Override
-    public void addABeer(Beer formData) {
+    public void addABeer(Beer aBeer) {
         String myNewBeer = "insert into beers (brewery_id, beer_name, brewery, description, image, abv, beer_type) values (?, ?, ?, ?, ?, ?, ?, ?)";
-		jdbcTemplate.update(myNewBeer, formData.getBrewery_Id(), formData.getName(), formData.getBrewery(),
-         formData.getDescription(), formData.getImage(), formData.getAbv(), formData.getType());   
+		jdbcTemplate.update(myNewBeer, aBeer.getBrewery_Id(), aBeer.getName(), aBeer.getBrewery(),
+         aBeer.getDescription(), aBeer.getImage(), aBeer.getAbv(), aBeer.getType());   
     }
 
     @Override
@@ -37,7 +50,7 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
-    public List<Beer> getBeerListByBrewery(String breweryId) {
+    public List<Beer> getBeerByBreweryId(String breweryId) {
         List<Beer> listBeers = new ArrayList();
 		String sqlQuery = "select * from beers where brewery_id = ? order by beer_name asc";
 		SqlRowSet theRowSet = jdbcTemplate.queryForRowSet(sqlQuery, breweryId);
