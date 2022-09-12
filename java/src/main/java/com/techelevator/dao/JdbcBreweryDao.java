@@ -22,13 +22,10 @@ public class JdbcBreweryDao implements BreweryDao{
     // CREATE A BREWERY
 	@Override
 	public void addNewBrewery(Brewery aBrewery) {
-		String sqlAddBrewery = "INSERT INTO breweries (name, address, city,"
-				+ "zipcode, phone_number, description, brewery_logo_url, website_url,"
-				+ "user_id, hours, lat, lng) VALUES (?, ?, ?, ?, ?, ?, ?, ?,"
-				+ "?, ?, ?, ?)";
-		jdbcTemplate.update(sqlAddBrewery, aBrewery.getName(), aBrewery.getAddress(),
-				aBrewery.getCity(), aBrewery.getZipcode(), aBrewery.getPhone(), aBrewery.getWebsiteUrl(),
-				aBrewery.getUser_Id(), aBrewery.getHours());
+		String sqlAddBrewery = "INSERT INTO breweries (brewery_id, owner_id, brewery_name, address, city,"
+				+ "state, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(sqlAddBrewery, aBrewery.getBreweryId(), aBrewery.getOwner_id(), aBrewery.getBreweryName(), aBrewery.getAddress(),
+				aBrewery.getCity(), aBrewery.getState(), aBrewery.getUser_Id());
 	}
 
     // GET ALL BREWERIES
@@ -66,13 +63,10 @@ public class JdbcBreweryDao implements BreweryDao{
 	
 	@Override
 	public void updateBrewery(Brewery aBrewery) {
-		String sqlUpdateBrewery = "UPDATE breweries SET name = ?, address = ?,"
-				+ " city = ?, zipcode = ?, phone_number = ?, description = ?, "
-				+ "brewery_logo_url = ?, user_id = ?, hours = ?, lat = ?, lng = ?"
-				+ "WHERE brewery_id = ?";
-		jdbcTemplate.update(sqlUpdateBrewery, aBrewery.getName(), aBrewery.getAddress(),
-				aBrewery.getCity(), aBrewery.getZipcode(), aBrewery.getPhone(), aBrewery.getUser_Id(),
-				aBrewery.getHours(), aBrewery.getBreweryId());
+		String sqlUpdateBrewery = "UPDATE breweries SET brewery_name = ?, address = ?,"
+				+ " city = ?, state = ?, user_id = ?, WHERE brewery_id = ?";
+		jdbcTemplate.update(sqlUpdateBrewery, aBrewery.getBreweryName(), aBrewery.getAddress(),
+				aBrewery.getCity(), aBrewery.getState(), aBrewery.getUser_Id(), aBrewery.getBreweryId());
 	}
 	
 // DELETE A BREWERY
@@ -87,7 +81,7 @@ public class JdbcBreweryDao implements BreweryDao{
 	  
 // GET BREWERY BY USERID
 	  @Override
-	  public List<Brewery> getBreweryByUserID(Long userId) {
+	  public List<Brewery> getBreweryByUserId(Long userId) {
 		  List<Brewery> allBreweriesByUserId = new ArrayList<>();
 			String sqlGetAllBreweriesByUserId = "SELECT * FROM breweries WHERE user_id = ?";
 			SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllBreweriesByUserId, userId);
@@ -98,6 +92,20 @@ public class JdbcBreweryDao implements BreweryDao{
 			}
 			return allBreweriesByUserId;
 	  }
+
+	  @Override
+	  public List<Brewery> getImagesByBreweryId(String breweryId) {
+		  List<Brewery> imageList = new ArrayList<>();
+  
+		  String sql = "SELECT brewery_id, img_url FROM img_url WHERE brewery_id = ?;";
+  
+		  SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
+		  while(results.next()) {
+			  Brewery image = mapRowToBrewery(results);
+			  imageList.add(image);
+		  }
+		  return imageList;
+	  }
 	 
 	
 	// MAP ROW TO BREWERY
@@ -105,13 +113,13 @@ public class JdbcBreweryDao implements BreweryDao{
 	private Brewery mapRowToBrewery(SqlRowSet row) {
 	Brewery newBrewery = new Brewery();
 	newBrewery.setBreweryId(row.getLong("brewery_id"));
-	newBrewery.setName(row.getString("name"));
+	newBrewery.setOwner_id(row.getLong("owner_id"));
+	newBrewery.setBreweryName(row.getString("brewery_name"));
 	newBrewery.setAddress(row.getString("address"));
 	newBrewery.setCity(row.getString("city"));
-	newBrewery.setZipcode(row.getString("zipcode"));
-	newBrewery.setPhone(row.getString("phone_number"));
-	newBrewery.setWebsiteUrl(row.getString("website_url"));
+	newBrewery.setState(row.getString("state"));
 	newBrewery.setUser_Id(row.getInt("user_id"));
+	newBrewery.setImagePath(row.getString("img_url"));
 	return newBrewery;
 	}
 }

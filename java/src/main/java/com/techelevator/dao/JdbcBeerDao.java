@@ -33,12 +33,12 @@ public class JdbcBeerDao implements BeerDao {
 		return allBeers;
 	}
 
-    @Override
-    public void addABeer(Beer aBeer) {
-        String myNewBeer = "insert into beers (brewery_id, beer_name, brewery, description, image, abv, beer_type) values (?, ?, ?, ?, ?, ?, ?, ?)";
-		jdbcTemplate.update(myNewBeer, aBeer.getBrewery_Id(), aBeer.getName(), aBeer.getBrewery(),
-         aBeer.getDescription(), aBeer.getImage(), aBeer.getAbv(), aBeer.getType());   
-    }
+	@Override
+	public void addABeer(Beer aBeer) {
+		String newBeer = "insert into beers (beer_id, beer_name, brewery_name, style, abv, description, brewery_id, img_url) values (?, ?, ?, ?, ?, ?, ?, ?)";
+		jdbcTemplate.update(newBeer, aBeer.getBeer_Id(), aBeer.getBeer_name(), aBeer.getBrewery_name(), aBeer.getStyle(),
+		aBeer.getAbv(), aBeer.getDescription(), aBeer.getBrewery_Id(), aBeer.getImg_url());
+	}
 
     @Override
     public void deleteABeer(String beerId) {
@@ -77,13 +77,13 @@ public class JdbcBeerDao implements BeerDao {
     private Beer mapRowToBeer(SqlRowSet rs) {
     	Beer beer = new Beer();
 		beer.setBeer_Id(rs.getString("beer_id"));
-		beer.setBrewery_Id(rs.getString("brewery_id"));
-		beer.setName(rs.getString("beer_name"));
-		beer.setBrewery(rs.getString("brewery"));
 		beer.setDescription(rs.getString("description"));
-		beer.setImage(rs.getString("image"));
+		beer.setBrewery_Id(rs.getString("brewery_id"));
+		beer.setBeer_name(rs.getString("beer_name"));
+		beer.setBrewery_name(rs.getString("brewery_name"));
+		beer.setImg_url(rs.getString("img_url"));
 		beer.setAbv(rs.getString("abv"));
-		beer.setType(rs.getString("beer_type"));
+		beer.setStyle(rs.getString("style"));
         return beer;
 
     }

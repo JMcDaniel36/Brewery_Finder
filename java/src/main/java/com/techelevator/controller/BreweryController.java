@@ -30,7 +30,7 @@ public class BreweryController {
     }
 
     @RequestMapping(path = "/breweries", method = RequestMethod.POST)
-    public void addNewBrewery(@RequestBody Brewery aBrewery) throws Exception {
+    public void addNewBrewery(@RequestBody Brewery aBrewery) {
         breweryDao.addNewBrewery(aBrewery);
     }
 
@@ -51,6 +51,6 @@ public class BreweryController {
 
     @RequestMapping(path = "/users/{userId}/breweries", method = RequestMethod.GET)
 	public List<Brewery> getBreweriesByUserId(@PathVariable Long userId) {
-		return breweryDao.getBreweryByUserID(userId);
+		return breweryDao.getBreweryByUserId(userId);
 	}	
 }

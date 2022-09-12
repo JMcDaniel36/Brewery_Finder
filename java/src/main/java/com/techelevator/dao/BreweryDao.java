@@ -17,6 +17,10 @@ public interface BreweryDao {
 	
 		void deleteBrewery(String breweryId);
 	
-		List<Brewery> getBreweryByUserID(Long userId);
+		List<Brewery> getBreweryByUserId(Long userId);
+
+		List <Brewery> getImagesByBreweryId(String breweryId);
+
+
 	
 }

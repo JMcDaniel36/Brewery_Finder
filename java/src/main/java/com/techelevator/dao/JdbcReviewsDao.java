@@ -22,7 +22,7 @@ public class JdbcReviewsDao implements ReviewsDao{
 	
 	//GET REVIEWS BY ID
 	@Override
-	public List<Reviews> getReviews(Long beerId){
+	public List<Reviews> getReviews(String beerId){
 		 List<Reviews> reviews = new ArrayList<>();
 		 String sqlGetReviewByBeerId = "SELECT * FROM reviews WHERE beer_id = ? ORDER BY create_date";
 		 SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetReviewByBeerId, beerId);
@@ -38,34 +38,21 @@ public class JdbcReviewsDao implements ReviewsDao{
 	
 	@Override
 	public void addReview(Reviews aReview) {
-		String sqladdReview = "INSERT INTO reviews (description, rating, beer_id, username, name) VALUES (?,?,?,?,?)";
-		jdbcTemplate.update(sqladdReview, aReview.getDescription(), aReview.getRating(), aReview.getBeerId(),aReview.getUserId(), aReview.getName());
+		String sqlQuery = "INSERT INTO reviews (description, rating, beer_id, username, name) VALUES (?,?,?,?,?)";
+		jdbcTemplate.update(sqlQuery, aReview.getDescription(), aReview.getRating(), aReview.getBeerId(),aReview.getUserId(), aReview.getName());
 	}
 	
-	//SAVE REVIEW
-	@Override
-	public void saveReview(@Valid Reviews review) {
-		String sqlSaveReview = "INSERT INTO reviews(description, rating, create_date, beer_id) VALUES(?,?,?,?)";
-		jdbcTemplate.update(sqlSaveReview, review.getDescription(), review.getRating(), 
-				review.getCreateTime(), review.getBeerId());
-		
-	}
-	
-	// GET REVIEWS BY BEER ID
-	
-	@Override
-	public List<Reviews> searchReviewsByBeerId(long beerId) {
-		List<Reviews> reviewList = new ArrayList<>();
-		String sqlSearchReviewByBeerId = "SELECT * FROM reviews WHERE beer_id = ? ORDER BY create_date";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSearchReviewByBeerId, beerId);
-		
-		while(results.next()){
-			reviewList.add(mapRowToReview(results));
+	public List<Reviews> getAverageStarsById(String beerId) {
+		List<Reviews> returnedDetails = new ArrayList();
+		String sqlQuery = "select review_id as review_id, beer_id as beer_id, (select cast(count(star_rating) as varchar) as review_text from reviews where beer_id = ?), (select cast(avg(star_rating) as int) as star_rating from reviews where beer_id = ?), username as username from reviews where beer_id = ?";
+		SqlRowSet theRowSet = jdbcTemplate.queryForRowSet(sqlQuery, beerId, beerId, beerId);
+		while(theRowSet.next()) {
+			Reviews returnedDetail = mapRowToReview(theRowSet);
+			returnedDetails.add(returnedDetail);
 		}
-		
-		
-		return reviewList;
+		return returnedDetails;
 	}
+	
 	
 	//MAP ROW TO REVIEW
 

@@ -8,12 +8,10 @@ import com.techelevator.model.Reviews;
 
 public interface ReviewsDao {
 
-	List<Reviews> getReviews(Long beer_id);
+	List<Reviews> getReviews(String beerId);
 	
 	void addReview(Reviews aReview);
 
-	void saveReview(@Valid Reviews review);
-
-	List<Reviews> searchReviewsByBeerId(long beerId);
+	List <Reviews> getAverageStarsById(String beerId);
 
 }

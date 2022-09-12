@@ -2,26 +2,26 @@ package com.techelevator.model;
 
 public class Brewery {
     private Long breweryId;
-	private String name;
+    private Long owner_id;
+	private String breweryName;
+    private String website;
 	private String address;
 	private String city;
-	private String zipcode;
-	private String phone;
+	private String state;
 	private int user_Id;
-    private String hours;
-	private String websiteUrl;
+    private String imagePath;
 
-    public Brewery(Long breweryId, String name, String address, String city, String zipcode, String phone, int user_Id,
-            String hours, String websiteUrl) {
+    public Brewery(Long breweryId, Long ownerId, String breweryName, String website, String address, String city, String state,
+     int user_Id, String imagePath) {
         this.breweryId = breweryId;
-        this.name = name;
+        this.owner_id = ownerId;
+        this.breweryName = breweryName;
+        this.website = website;
         this.address = address;
         this.city = city;
-        this.zipcode = zipcode;
-        this.phone = phone;
+        this.state = state;
         this.user_Id = user_Id;
-        this.hours = hours;
-        this.websiteUrl = websiteUrl;
+        this.imagePath = imagePath;
     }
 
     public Brewery(){
@@ -35,13 +35,30 @@ public class Brewery {
     public void setBreweryId(Long breweryId) {
         this.breweryId = breweryId;
     }
-
-    public String getName() {
-        return name;
+    
+    public Long getOwner_id() {
+        return owner_id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOwner_id(Long owner_id) {
+        this.owner_id = owner_id;
+    }
+
+
+    public String getBreweryName() {
+        return breweryName;
+    }
+
+    public void setBreweryName(String breweryName) {
+        this.breweryName = breweryName;
+    }
+
+    public String getWebsite() {
+        return website;
+    }
+
+    public void setWebsite(String website) {
+        this.website = website;
     }
 
     public String getAddress() {
@@ -60,20 +77,12 @@ public class Brewery {
         this.city = city;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getState() {
+        return state;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public int getUser_Id() {
@@ -84,19 +93,12 @@ public class Brewery {
         this.user_Id = user_Id;
     }
 
-    public String getHours() {
-        return hours;
+    public String getImagePath() {
+        return imagePath;
     }
 
-    public void setHours(String hours) {
-        this.hours = hours;
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
-    public String getWebsiteUrl() {
-        return websiteUrl;
-    }
-
-    public void setWebsiteUrl(String websiteUrl) {
-        this.websiteUrl = websiteUrl;
-    }
 }
