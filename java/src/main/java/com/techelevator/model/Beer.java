@@ -32,7 +32,6 @@ public class Beer {
     public void setBeer_Id(String beer_Id) {
         this.beer_Id = beer_Id;
     }
-    
 
     public String getBrewery_Id() {
         return brewery_Id;

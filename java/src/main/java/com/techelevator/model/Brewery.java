@@ -8,11 +8,8 @@ public class Brewery {
 	private String address;
 	private String city;
 	private String state;
-	private int user_Id;
-    private String imagePath;
 
-    public Brewery(Long breweryId, Long ownerId, String breweryName, String website, String address, String city, String state,
-     int user_Id, String imagePath) {
+    public Brewery(Long breweryId, Long ownerId, String breweryName, String website, String address, String city, String state) {
         this.breweryId = breweryId;
         this.owner_id = ownerId;
         this.breweryName = breweryName;
@@ -20,8 +17,6 @@ public class Brewery {
         this.address = address;
         this.city = city;
         this.state = state;
-        this.user_Id = user_Id;
-        this.imagePath = imagePath;
     }
 
     public Brewery(){
@@ -43,7 +38,6 @@ public class Brewery {
     public void setOwner_id(Long owner_id) {
         this.owner_id = owner_id;
     }
-
 
     public String getBreweryName() {
         return breweryName;
@@ -85,20 +79,6 @@ public class Brewery {
         this.state = state;
     }
 
-    public int getUser_Id() {
-        return user_Id;
+    public void setOwner_Id(int owner_id) {
     }
-
-    public void setUser_Id(int user_Id) {
-        this.user_Id = user_Id;
-    }
-
-    public String getImagePath() {
-        return imagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        this.imagePath = imagePath;
-    }
-
 }

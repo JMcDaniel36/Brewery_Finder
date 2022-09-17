@@ -9,7 +9,7 @@ public interface BeerDao {
 	
 	List <Beer> getAllBeers();
 	
-	List <Beer> getBeerByBreweryId(String breweryId);
+	List <Beer> getBeerByBreweryId(Long breweryId);
 	
 	List <Beer> getSingleBeerInfo(String beerId);
 		

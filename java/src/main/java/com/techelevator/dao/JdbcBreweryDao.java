@@ -23,12 +23,14 @@ public class JdbcBreweryDao implements BreweryDao{
 	@Override
 	public void addNewBrewery(Brewery aBrewery) {
 		String sqlAddBrewery = "INSERT INTO breweries (brewery_id, owner_id, brewery_name, address, city,"
-				+ "state, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)";
+				+ "state, website) VALUES (?, ?, ?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sqlAddBrewery, aBrewery.getBreweryId(), aBrewery.getOwner_id(), aBrewery.getBreweryName(), aBrewery.getAddress(),
-				aBrewery.getCity(), aBrewery.getState(), aBrewery.getUser_Id());
+				aBrewery.getCity(), aBrewery.getState(), aBrewery.getWebsite());
 	}
 
-    // GET ALL BREWERIES
+
+
+	// GET ALL BREWERIES
 	
 	@Override
 	public List<Brewery> getAllBreweries(){
@@ -45,7 +47,7 @@ public class JdbcBreweryDao implements BreweryDao{
 	
 // GET BREWERY BY ID
 	@Override
-	public List<Brewery> getBreweryById(String breweryId) {
+	public List<Brewery> getBreweryById(Long breweryId) {
 		List<Brewery> returnedBreweries = new ArrayList<>();
 		String sqlGetABrewery = "SELECT * FROM breweries WHERE brewery_id = ?";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetABrewery, breweryId);
@@ -64,9 +66,9 @@ public class JdbcBreweryDao implements BreweryDao{
 	@Override
 	public void updateBrewery(Brewery aBrewery) {
 		String sqlUpdateBrewery = "UPDATE breweries SET brewery_name = ?, address = ?,"
-				+ " city = ?, state = ?, user_id = ?, WHERE brewery_id = ?";
+				+ " city = ?, state = ?, website = ? WHERE brewery_id = ?";
 		jdbcTemplate.update(sqlUpdateBrewery, aBrewery.getBreweryName(), aBrewery.getAddress(),
-				aBrewery.getCity(), aBrewery.getState(), aBrewery.getUser_Id(), aBrewery.getBreweryId());
+				aBrewery.getCity(), aBrewery.getState(), aBrewery.getBreweryId(), aBrewery.getWebsite());
 	}
 	
 // DELETE A BREWERY
@@ -77,34 +79,20 @@ public class JdbcBreweryDao implements BreweryDao{
 		  String sqlDeleteBrewery = "DELETE FROM breweries WHERE brewery_id = ?";
 		  jdbcTemplate.update(sqlDeleteBrewery, breweryId);
 	  }
-	 
-	  
-// GET BREWERY BY USERID
-	  @Override
-	  public List<Brewery> getBreweryByUserId(Long userId) {
-		  List<Brewery> allBreweriesByUserId = new ArrayList<>();
-			String sqlGetAllBreweriesByUserId = "SELECT * FROM breweries WHERE user_id = ?";
-			SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetAllBreweriesByUserId, userId);
-			
-			while(results.next()) {
-				Brewery aBrewery = mapRowToBrewery(results);
-				allBreweriesByUserId.add(aBrewery);
-			}
-			return allBreweriesByUserId;
-	  }
+
 
 	  @Override
-	  public List<Brewery> getImagesByBreweryId(String breweryId) {
-		  List<Brewery> imageList = new ArrayList<>();
+	  public List<Brewery> getUrlByBreweryId(String breweryId) {
+		  List<Brewery> urlList = new ArrayList<>();
   
-		  String sql = "SELECT brewery_id, img_url FROM img_url WHERE brewery_id = ?;";
+		  String sql = "SELECT brewery_id, website FROM breweries WHERE brewery_id = ?;";
   
 		  SqlRowSet results = jdbcTemplate.queryForRowSet(sql, breweryId);
 		  while(results.next()) {
-			  Brewery image = mapRowToBrewery(results);
-			  imageList.add(image);
+			  Brewery url = mapRowToBrewery(results);
+			  urlList.add(url);
 		  }
-		  return imageList;
+		  return urlList;
 	  }
 	 
 	
@@ -118,8 +106,7 @@ public class JdbcBreweryDao implements BreweryDao{
 	newBrewery.setAddress(row.getString("address"));
 	newBrewery.setCity(row.getString("city"));
 	newBrewery.setState(row.getString("state"));
-	newBrewery.setUser_Id(row.getInt("user_id"));
-	newBrewery.setImagePath(row.getString("img_url"));
+	newBrewery.setWebsite(row.getString("website"));
 	return newBrewery;
 	}
 }

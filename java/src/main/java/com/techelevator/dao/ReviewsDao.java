@@ -8,10 +8,10 @@ import com.techelevator.model.Reviews;
 
 public interface ReviewsDao {
 
-	List<Reviews> getReviews(String beerId);
+	List<Reviews> getReviews(Long userId);
 	
 	void addReview(Reviews aReview);
 
-	List <Reviews> getAverageStarsById(String beerId);
+	List <Reviews> getAverageStarsByUserId(String userId);
 
 }

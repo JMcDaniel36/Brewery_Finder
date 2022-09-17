@@ -50,9 +50,9 @@ public class JdbcBeerDao implements BeerDao {
     }
 
     @Override
-    public List<Beer> getBeerByBreweryId(String breweryId) {
+    public List<Beer> getBeerByBreweryId(Long breweryId) {
         List<Beer> listBeers = new ArrayList();
-		String sqlQuery = "select * from beers where brewery_id = ? order by beer_name asc";
+		String sqlQuery = "SELECT * from beers WHERE brewery_id = ?";
 		SqlRowSet theRowSet = jdbcTemplate.queryForRowSet(sqlQuery, breweryId);
 		while(theRowSet.next()) {
 			Beer returnedBeer = mapRowToBeer(theRowSet);

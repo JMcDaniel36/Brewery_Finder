@@ -36,7 +36,7 @@ public class BreweryController {
 
     @RequestMapping(path = "/breweries/{breweryId}", method = RequestMethod.GET)
 	public List<Brewery> getBreweryById(@PathVariable String breweryId) {
-	    return breweryDao.getBreweryById(breweryId);
+	    return breweryDao.getBreweryById(Long.valueOf(breweryId));
 	}
 
     @RequestMapping(path = "/breweries", method = RequestMethod.PUT)
@@ -49,8 +49,4 @@ public class BreweryController {
 		breweryDao.deleteBrewery(breweryId);
 	}
 
-    @RequestMapping(path = "/users/{userId}/breweries", method = RequestMethod.GET)
-	public List<Brewery> getBreweriesByUserId(@PathVariable Long userId) {
-		return breweryDao.getBreweryByUserId(userId);
-	}	
 }
