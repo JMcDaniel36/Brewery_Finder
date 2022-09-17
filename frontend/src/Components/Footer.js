@@ -6,9 +6,9 @@ export default function Footer() {
         <footer className='App-footer' >
             <p>Triple J Services</p>
             <ul>
-                <li>Address</li>
-                <li>Email</li>
-                <li>Phone Number</li>
+                <li>Address: 315 Cooper Street, Twin Peaks, WA</li>
+                <li>Email: tripleJJJ@gmail.com</li>
+                <li>Call Us: (555) 867-5309</li>
 
             </ul>
         </footer>
