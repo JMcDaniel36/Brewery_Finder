@@ -28,9 +28,9 @@ public class ReviewsController {
         this.reviewsDao = reviewsDao;
     }
 
-    @RequestMapping(path = "/reviews/{userId}", method = RequestMethod.GET)
-    public List<Reviews> getReviews(@PathVariable String userId) {
-        return reviewsDao.getReviews(Long.valueOf(userId));
+    @RequestMapping(path = "/reviews/id/{userId}", method = RequestMethod.GET)
+    public List<Reviews> getReviews(@PathVariable Integer userId) {
+        return reviewsDao.getReviews(userId);
     }
 
     @RequestMapping(path = "/reviews", method = RequestMethod.POST)
@@ -38,9 +38,9 @@ public class ReviewsController {
         reviewsDao.addReview(aReview);
     }
 
-    @RequestMapping(path = "/reviews/{userId}/averageStars", method = RequestMethod.GET)
-    public List<Reviews> getAverageStarsByUserId(@PathVariable String userId){
-        return reviewsDao.getAverageStarsByUserId(userId);
+    @RequestMapping(path = "/reviews/name/{beer_name}", method = RequestMethod.GET)
+    public List<Reviews> getReviewsByBeerName(@PathVariable String beer_name) {
+        return reviewsDao.getReviewsByBeerName(beer_name);
     }
 
 }

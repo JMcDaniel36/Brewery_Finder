@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
-import javax.validation.Valid;
+//import javax.validation.Valid;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -22,7 +22,7 @@ public class JdbcReviewsDao implements ReviewsDao{
 	
 	//GET REVIEWS BY ID
 	@Override
-	public List<Reviews> getReviews(Long userId){
+	public List<Reviews> getReviews(Integer userId){
 		 List<Reviews> reviews = new ArrayList<>();
 		 String sqlGetReviewByUserId = "SELECT * FROM reviews WHERE user_id = ?";
 		 SqlRowSet results = jdbcTemplate.queryForRowSet(sqlGetReviewByUserId, userId);
@@ -42,11 +42,11 @@ public class JdbcReviewsDao implements ReviewsDao{
 		jdbcTemplate.update(sqlQuery, aReview.getDescription(), aReview.getRating(), aReview.getBeer_name(),
 				aReview.getBrewery_name(), aReview.getUser_id(), aReview.getReview_id());
 	}
-	
-	public List<Reviews> getAverageStarsByUserId(String userId) {
+
+	public List<Reviews> getReviewsByBeerName(String beer_name) {
 		List<Reviews> returnedDetails = new ArrayList();
-		String sqlQuery = "select review_id as review_id, beer_name as beer_name, (select cast(count(rating) as varchar) as review from reviews where beer_name = ?), (select cast(avg(rating) as int) as rating from reviews where user_id = ?), user_id as user_id from reviews where user_id = ?";
-		SqlRowSet theRowSet = jdbcTemplate.queryForRowSet(sqlQuery, userId, userId, userId);
+		String sqlQuery = "select * from reviews where beer_name = ?";
+		SqlRowSet theRowSet = jdbcTemplate.queryForRowSet(sqlQuery, beer_name);
 		while(theRowSet.next()) {
 			Reviews returnedDetail = mapRowToReview(theRowSet);
 			returnedDetails.add(returnedDetail);
