@@ -10,16 +10,14 @@ public interface BreweryDao {
 		List<Brewery> getAllBreweries();
 	
 		void addNewBrewery(Brewery aBrewery);
-	
-		List<Brewery> getBreweryById(String breweryId);
-	
+
+		List<Brewery> getBreweryById(Long breweryId);
+
 		void updateBrewery(Brewery aBrewery);
 	
 		void deleteBrewery(String breweryId);
-	
-		List<Brewery> getBreweryByUserId(Long userId);
 
-		List <Brewery> getImagesByBreweryId(String breweryId);
+		List <Brewery> getUrlByBreweryId(String breweryId);
 
 
 	

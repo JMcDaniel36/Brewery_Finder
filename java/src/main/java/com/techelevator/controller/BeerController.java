@@ -50,7 +50,7 @@ public class BeerController {
     @PreAuthorize("permitAll")
 	@RequestMapping(path="/breweries/{breweryId}/beers", method = RequestMethod.GET)
 	public List<Beer> getBeerByBreweryId(@PathVariable String breweryId) {
-		return beerDAO.getBeerByBreweryId(breweryId);
+		return beerDAO.getBeerByBreweryId(Long.valueOf(breweryId));
 	}
 
 
