@@ -10,6 +10,25 @@ const store = ConfigureStore();
 
 function App() {
 
+  // const breweries = (THIS NEEDS TO FETCH DATA).map(beer =>{
+//     return (
+//       <Brewery 
+//           key={brewery.id}
+//           {...brewery}
+//       />
+//     )
+//   })
+
+//   const beers = (THIS NEEDS TO FETCH DATA).map(beer => {
+//     return (
+//         <Beer
+//             key={beer.id}
+//             {...beer}
+            
+//         />
+//     )
+// })   
+
   return (
     <Provider store={store}>
       <Header/>
