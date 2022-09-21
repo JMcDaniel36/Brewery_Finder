@@ -6,12 +6,27 @@ import Home from '../Home/Home'
 import {addToken, deleteUser} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
+import axios from 'axios'
 
 const mapStateToProps = state => {
     return {
         token: state.token,
         user: state.user
     }
+}
+const handleSubmit = () => {
+    const data = {
+        token:this.state.token
+
+    } ;
+    axios.post(URL,data)
+    .then((response) => {
+        this.setState({user:response.data})
+    })
+    axios.get(URL)
+    .then((response) =>{
+        this.setState({user:response.data})
+    })
 }
 
 const mapDispatchToProps = (dispatch) => ({
