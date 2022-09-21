@@ -45,7 +45,7 @@ class Login extends Component {
 
     render(){
         return(
-            <div classname="login-box">
+            <div className="login-box">
                 <h1 className='sign-in-header'>Please Sign In To Your Triple J Account</h1>
                 <label class="sr-only">Username</label>
                 <div classname="input-box">
@@ -71,8 +71,10 @@ class Login extends Component {
                         required
                     />
                 </div>
-                <Link to="/register" id='register-link'>Or sign up for one here!</Link>
+                
                 <button type="submit" onClick={this.handleLogin} id='submit-button'>Sign in</button>
+                <br></br>
+                <Link to="/register" id='register-link'>Or sign up for one here!</Link>
             </div>
         )
     }

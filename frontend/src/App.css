@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  
 }
 
 .App-logo {
@@ -15,23 +16,27 @@
 
 .App-header {
   background-color: #ed8814;
-  min-height: 30vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 1vmin);
   color: white;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 .App-footer {
   background-color: #ed8814;
-  min-height: 30vh;
+  min-height: 20vh;
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  /* font-size: calc(10px + 2vmin); */
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+  font-size: 20px;
   color: white;
 }
 
@@ -40,10 +45,11 @@
 }
 
 .sign-in-header, .register-header {
-  align-items: center;
+  /* align-items: center;
   justify-content: center;
-  text-align: center;
+  text-align: center; */
   font-size: 4vh;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 #username, #password, #password-confirm {
@@ -70,4 +76,40 @@ margin-bottom: 10px;
   to {
     transform: rotate(360deg);
   }
+}
+
+.user-info {
+  margin-right: 20px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.beer-display{
+
+  justify-content: center;
+  margin: 20px;
+  justify-content: space-evenly;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+}
+button{
+  border-radius: 5px;
+  margin: 5px;
+  background-color: #F5CA7B;
+}
+
+.beer-button{
+  width: 150px;
+  margin: 10px;
+}
+
+.logo{
+  height: 50px;
+}
+
+.breweryImage{
+  contain: content;
+  margin-left: 20px;
+  
 }

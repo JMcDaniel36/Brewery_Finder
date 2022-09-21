@@ -55,10 +55,10 @@ export default function Beer(props) {
             <div className="beer-display" > 
             {/* <img src={`${beers.img_url}`}> </img> */}
 
-                <button onClick={() => getBeer()}>Get Beer</button>
-                {beers.map(beer => <p>{beer.beer_name + " : " + beer.brewery_name}</p>)}
-                <button onClick={() => getBrewery()}>Get Breweries</button>
-                {brewery.map(brewery => <p>{brewery.breweryName + " : " + brewery.address}</p>)}
+                <button className="beer-button" onClick={() => getBeer()}>Get Beer</button>
+                {beers.map(beer => <ul>{beer.beer_name + " : " + beer.brewery_name}</ul>)}
+                <button className="beer-button" onClick={() => getBrewery()}>Get Breweries</button>
+                {brewery.map(brewery => <ul>{brewery.breweryName + " : " + brewery.address}</ul>)}
                 {/* <img 
                     src={`${beers.img_url}`} 
                     className="beer-image" 

@@ -7,7 +7,7 @@ import {addToken, deleteUser} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
-
+// import img from '../images/brewery.png'
 
 //const baseUrl = "http://localhost:8080/";
 
@@ -49,25 +49,29 @@ class Main extends Component {
 
     render(){
         return(
-            <div classname = "user-info">
+            <div className = "user-info">
                 {this.props.token.token !== undefined ?
                         <div>
 
                             <Link to='/home'>Home | </Link>
                             <Link to='/login' onClick={this.handleLogout}>logout</Link> 
                             <Redirect to='/home'/>
+                            
                            
 
                         </div>  
                     : 
                         <Link to='/login'>Home | </Link>
                 }
+               
                 <Switch>
                     <Route path='/login' component={() => <Login/>}/>
                     <Route path='/register'component={() => <Register/>}/>
                     <Route path='/home' component={this.props.token.token !== undefined ? () => <Home/> : null}/>
                     <Redirect to='/login'/>
                 </Switch>
+                {/* <img className='breweryImage' src={brewery} alt={'brewery'} /> */}
+                <br></br>
             </div>
         )
     }
