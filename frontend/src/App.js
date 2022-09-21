@@ -5,6 +5,8 @@ import {ConfigureStore} from './Redux/configureStore'
 import Header from './Components/Header'
 import Footer from './Components/Footer'
 import './App.css'
+import Brewery from './Components/Brewery'
+import Beer from './Components/Beer'
 
 const store = ConfigureStore();
 
@@ -35,6 +37,8 @@ function App() {
       <BrowserRouter>
         <Main/>
       </BrowserRouter>
+      <Brewery/>
+      <Beer/>
       <Footer/>
     </Provider>
   );

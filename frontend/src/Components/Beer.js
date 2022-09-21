@@ -1,10 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import {addBeer, deleteBeer, viewBeers} from './Crud'
+import axios from 'axios';
+
+
 
 export default function Beer(props) {
     return (
             <div className="beer-display" > 
+                <h1>Im gonna be beer</h1>
                 <img 
                     src={`${props.img_url}`} 
                     className="beer-image" 

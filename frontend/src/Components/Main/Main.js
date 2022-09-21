@@ -31,7 +31,7 @@ class Main extends Component {
 
     render(){
         return(
-            <div>
+            <div classname = "user-info">
                 {this.props.token.token !== undefined ?
                         <div>
                             <Link to='/home'>Home | </Link>

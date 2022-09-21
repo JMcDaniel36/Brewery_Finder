@@ -45,30 +45,32 @@ class Login extends Component {
 
     render(){
         return(
-            <div>
+            <div classname="login-box">
                 <h1 className='sign-in-header'>Please Sign In To Your Triple J Account</h1>
                 <label class="sr-only">Username</label>
-                <input
-                    type="text"
-                    id="username"
-                    name="username"
-                    class="form-control"
-                    placeholder="Username"
-                    v-model="user.username"
-                    onChange={this.handleInputChange}
-                    required
-                />
-                <label class="sr-only">Password</label>
-                <input
-                    type="password"
-                    id="password"
-                    name="password"
-                    class="form-control"
-                    placeholder="Password"
-                    v-model="user.password"
-                    onChange={this.handleInputChange}
-                    required
-                />
+                <div classname="input-box">
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        class="form-control"
+                        placeholder="Username"
+                        v-model="user.username"
+                        onChange={this.handleInputChange}
+                        required
+                    />
+                    <label class="sr-only">Password</label>
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        class="form-control"
+                        placeholder="Password"
+                        v-model="user.password"
+                        onChange={this.handleInputChange}
+                        required
+                    />
+                </div>
                 <Link to="/register" id='register-link'>Or sign up for one here!</Link>
                 <button type="submit" onClick={this.handleLogin} id='submit-button'>Sign in</button>
             </div>

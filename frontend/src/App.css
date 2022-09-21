@@ -56,6 +56,13 @@ margin-bottom: 10px;
   font-size: 2vh;
 }
 
+.input-box{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display: inline-block;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
