@@ -38,12 +38,9 @@ public class BeerController {
 
 	@PreAuthorize("permitAll")
 	@RequestMapping(path="/beers", method=RequestMethod.GET)
-	public List<Beer> showAllBeers(ModelMap modelHolder) {
+	public List<Beer> showAllBeers() {
 		List<Beer> beerList = beerDAO.getAllBeers();
-		List<Brewery> breweries = breweryDAO.getAllBreweries();
-		
-		modelHolder.put("allBeers", beerList);
-		modelHolder.put("allBreweries", breweries);
+
 		return beerList;
 	}
 

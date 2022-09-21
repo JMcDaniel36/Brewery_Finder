@@ -5,7 +5,6 @@ import {newBrewery, updateBrewery, viewBreweries } from "./Crud"
 export default function Brewery(props) {
     return (
         <div className="brewery-display" > 
-            <h1>I will be pictures brewery</h1>
             <img 
                 src={`${props.imagePath}`} 
                 className="brewery-image" 

@@ -1,16 +1,63 @@
-import React from "react";
+import React, {useState} from "react";
 import ReactDOM from "react-dom";
 import {addBeer, deleteBeer, viewBeers} from './Crud'
 import axios from 'axios';
 
 
+// const handleSubmit = () => {
+//     const data = {
+//         token:this.state.token
+
+//     } ;
+//     axios.post(URL,data)
+//     .then((response) => {
+//         this.setState({user:response.data})
+//     })
+//     axios.get(URL)
+//     .then((response) =>{
+//         this.setState({user:response.data})
+//     })
+// }
+
+// const getBeer = () => {
+//     axios.get("http://localhost:8080/beers")
+//     .then((response) =>{
+//         setBeers(response.data)
+//     })
+// }
+
+
+
 
 export default function Beer(props) {
+    const [beers, setBeers] = useState([]);
+    const [brewery, setBrewery] = useState([]);
+
+    const getBeer = () => {
+        axios.get("http://localhost:8081/beers")
+        .then((response) =>{
+            console.log(response.data)
+            setBeers(response.data)
+        }).then(console.log(beers))
+    }
+
+    const getBrewery = () => {
+        axios.get("http://localhost:8081/breweries")
+        .then((response) => {
+            console.log(response.data)
+            setBrewery(response.data)
+        }).then(console.log(brewery))
+    }
+
     return (
             <div className="beer-display" > 
-                <h1>Im gonna be beer</h1>
+                <h1>Im gonna be beer pictures and info maybe?</h1>
+                <button onClick={() => getBeer()}>Get Beer</button>
+                {beers.map(beer => <p>{beer.beer_name + " : " + beer.brewery_name}</p>)}
+                <button onClick={() => getBrewery()}>Get Breweries</button>
+                {brewery.map(brewery => <p>{brewery.breweryName + " : " + brewery.address}</p>)}
                 <img 
-                    src={`${props.img_url}`} 
+                    src={`${beers.img_url}`} 
                     className="beer-image" 
                 />
                 <div className="beer-info">

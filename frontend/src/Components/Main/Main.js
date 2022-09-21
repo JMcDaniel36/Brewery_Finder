@@ -8,26 +8,29 @@ import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
 
+
+//const baseUrl = "http://localhost:8080/";
+
 const mapStateToProps = state => {
     return {
         token: state.token,
         user: state.user
     }
 }
-const handleSubmit = () => {
-    const data = {
-        token:this.state.token
+// const handleSubmit = () => {
+//     const data = {
+//         token:this.state.token
 
-    } ;
-    axios.post(URL,data)
-    .then((response) => {
-        this.setState({user:response.data})
-    })
-    axios.get(URL)
-    .then((response) =>{
-        this.setState({user:response.data})
-    })
-}
+//     } ;
+//     axios.post(URL,data)
+//     .then((response) => {
+//         this.setState({user:response.data})
+//     })
+//     axios.get(URL)
+//     .then((response) =>{
+//         this.setState({user:response.data})
+//     })
+// }
 
 const mapDispatchToProps = (dispatch) => ({
     addToken: () => { dispatch(addToken()) },
@@ -49,9 +52,11 @@ class Main extends Component {
             <div classname = "user-info">
                 {this.props.token.token !== undefined ?
                         <div>
+
                             <Link to='/home'>Home | </Link>
                             <Link to='/login' onClick={this.handleLogout}>logout</Link> 
                             <Redirect to='/home'/>
+                           
 
                         </div>  
                     : 
