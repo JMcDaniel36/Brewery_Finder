@@ -41,6 +41,8 @@ export default function Beer(props) {
         }).then(console.log(beers))
     }
 
+    
+
     const getBrewery = () => {
         axios.get("http://localhost:8081/breweries")
         .then((response) => {
@@ -51,21 +53,22 @@ export default function Beer(props) {
 
     return (
             <div className="beer-display" > 
-                <h1>Im gonna be beer pictures and info maybe?</h1>
+            {/* <img src={`${beers.img_url}`}> </img> */}
+
                 <button onClick={() => getBeer()}>Get Beer</button>
                 {beers.map(beer => <p>{beer.beer_name + " : " + beer.brewery_name}</p>)}
                 <button onClick={() => getBrewery()}>Get Breweries</button>
                 {brewery.map(brewery => <p>{brewery.breweryName + " : " + brewery.address}</p>)}
-                <img 
+                {/* <img 
                     src={`${beers.img_url}`} 
                     className="beer-image" 
-                />
-                <div className="beer-info">
+                /> */}
+                {/* <div className="beer-info">
                     <span className="beer-name">{props.beer_name}</span>
                     <span className="description">{props.description}</span>
                     <span className="beer-abv">{props.abv}</span>
                     <span className="beer-style">{props.style}</span>
-                </div>
+                </div> */}
             </div>
     )
 }
