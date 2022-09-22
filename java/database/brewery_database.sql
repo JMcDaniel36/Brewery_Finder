@@ -142,11 +142,11 @@ INSERT INTO beers (beer_id, beer_name, brewery_name, style, abv, description, br
 INSERT INTO beers (beer_id, beer_name, brewery_name, style, abv, description, brewery_id, img_url) VALUES (55, 'Jet Black Heart', 'Brew Dog', 'Oatmeal Stout', '7', 'Jet Black Heart is back; back in black. With an amped up 7%abv,  ABV, this Nitro Oatmeal Stout is decadent to the core and loaded with heaps of oatmeal, delivering a red carpet of silky opulence. It’s overflowing with notes of bitter cacao, roasted coffee, and dark berry fruits. It’ll plunge you into the deep, dark, abyss.', 14, 'https://www.brewdog.com/media/catalog/product/cache/eb360c13587b21a8ac6c611a2762b864/j/b/jbh_3can_pyramid.png');
 INSERT INTO beers (beer_id, beer_name, brewery_name, style, abv, description, brewery_id, img_url) VALUES (56, 'Cannon Blast', 'Brew Dog', 'Pale Ale', '5', 'The first collaboration beer between BrewDog and Columbus Blue Jackets has hit the ice. A hockey-themed beer that was named by the fans, for the fans. This American Pale Ale delivers a truckload of citrus and pine aromas in a crushable ABV. Our American Pale Ale is crisp in the can, and even crisper off the ice.', 14, 'https://www.brewdog.com/media/catalog/product/cache/1ad74aa7a7537876841fc58ef6f41538/c/a/cannonblast_16oz.png');
 
-INSERT INTO favorites (user_id, beer_name, brewery_name) VALUES (01, 'White Rajah', 'The Brew Kettle');
+INSERT INTO favorites (user_id, beer_name, brewery_name) VALUES (09, 'White Rajah', 'The Brew Kettle');
 
-INSERT INTO reviews (review_id, brewery_name, beer_name, description, rating, user_id) VALUES (01, 'The Brew Kettle', 'White Rajah', 'Really good!!1!', '5', 01);
+INSERT INTO reviews (review_id, brewery_name, beer_name, description, rating, user_id) VALUES (09, 'The Brew Kettle', 'White Rajah', 'Really good!!1!', '5', 01);
 
-INSERT INTO users (user_id, username, password_hash, role) VALUES (09, 'Person_McMan', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'owner');
+INSERT INTO users (user_id, username, password_hash, role) VALUES (09, 'Person_McMan', 'Jg45HuwT7PZkfuKTz6IB90CtWY4=', 'user');
 
 
 
