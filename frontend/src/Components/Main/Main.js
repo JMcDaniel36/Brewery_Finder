@@ -7,7 +7,7 @@ import {addToken, deleteUser} from '../../Redux/actionCreators'
 import {connect} from 'react-redux'
 import {withRouter} from 'react-router-dom'
 import axios from 'axios'
-// import img from '../images/brewery.png'
+//import brewery from 'C:/Users/JMcDa/Documents/Meritamerica/Capstone/final-capstone/frontend/src/images/brewery.png'
 
 //const baseUrl = "http://localhost:8080/";
 
